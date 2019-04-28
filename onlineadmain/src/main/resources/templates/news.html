@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>管理员主页</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="css/fontastic.css">
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.blue.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <!-- Tweaks for older IEs-->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+
+<body>
+<div class="page">
+    <!-- Main Navbar-->
+    <header class="header">
+        <nav class="navbar">
+
+            <div class="container-fluid">
+                <div class="navbar-holder d-flex align-items-center justify-content-between">
+                    <!-- Navbar Header-->
+                    <div class="navbar-header">
+                        <!-- Navbar Brand --><a href="index" class="navbar-brand d-none d-sm-inline-block">
+                        <div class="brand-text d-none d-lg-inline-block"><span>欢迎 </span><strong>管理员</strong>
+                        </div>
+                    </a>
+                        <!-- Toggle Button--><a id="toggle-btn" href="#"
+                                                class="menu-btn active"><span></span><span></span><span></span></a>
+                    </div>
+                    <!-- Navbar Menu -->
+                    <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                        <li class="nav-item"><a href="login" class="nav-link logout"> <span
+                                class="d-none d-sm-inline">退出</span><i class="fa fa-sign-out"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="page-content d-flex align-items-stretch">
+        <!-- Side Navbar -->
+        <nav class="side-navbar">
+            <ul class="list-unstyled">
+                <li><a href="index"> <i class="icon-home"></i>数据视点</a></li>
+                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i
+                        class="icon-interface-windows"></i>管理</a>
+                    <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                        <li><a href="studentTable">学生</a></li>
+                        <li><a href="teacherTable">教师</a></li>
+                        <li><a href="courseTable">课程信息</a></li>
+                        <li><a href="selectionTable">课程评价</a></li>
+                        <li><a href="newsTable">资讯管理</a></li>
+
+                    </ul>
+                </li>
+                <li class="active"><a href="news"> <i class="icon-padnote"></i>资讯发布</a></li>
+        </nav>
+        <div class="content-inner">
+            <!-- Page Header-->
+            <header class="page-header">
+                <div class="container-fluid">
+                    <h2 class="no-margin-bottom">学习资讯发布平台</h2>
+                </div>
+            </header>
+
+            <!-- Dashboard Counts Section-->
+            <section class="dashboard-counts no-padding-bottom bg-white">
+                <div class="container-fluid form " id="vueapp">
+
+                    <form method="post" class="form-validate" onsubmit="return false">
+                        <div class="form-group">
+                            <label for="title" class="label-material">资讯标题</label>
+                            <input id="title" type="text" name="newsTitle" required class="input-material">
+                        </div>
+                        <div class="form-group">
+                            <label for="title" class="label-material">资讯对象</label>
+                            <select class="form-control" id="sel1" name="newsTo">
+                                <option>学生</option>
+                                <option>教师</option>
+                                <option>全体用户</option>
+                            </select>
+                        </div>
+                        </br>
+                        <div id="app"></div>
+                        </br>
+                        <button id="Release" class="btn btn-primary" ,type="submit">发布</button>
+                        <!-- This should be submit button but I replaced it with <a> for demo purposes-->
+                    </form>
+                    <!-- <button id="btn1" class="btn btn-primary"></button> -->
+                </div>
+                <section class="dashboard-header">
+                    <div id="main" style="width: 100%;height:400px;"></div>
+                </section>
+            </section>
+            <footer class="main-footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p>在线学习 &copy; 2019 慕随心</p>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+<!-- JavaScript files-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/popper.js/umd/popper.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/jquery.cookie/jquery.cookie.js"></script>
+<script src="vendor/chart.js/Chart.min.js"></script>
+<script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+<!-- Main File-->
+<script src="js/front.js"></script>
+<script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+<script src="https://cdn.bootcss.com/wangEditor/10.0.13/wangEditor.min.js"></script>
+
+
+</body>
+<script>
+
+    $(function () {
+        var E = window.wangEditor;
+        var editor = new E('#app')
+        editor.customConfig.uploadImgShowBase64 = true
+        editor.create()
+        $("form").submit(function () {
+            if (editor.txt.html() == "<p><br></p>") {
+                alert("请输入新闻内容");
+                return;
+            }
+            var formData = new FormData();
+            formData.append("newsText", editor.txt.html());
+            formData.append("newsTitle", $("input[name='newsTitle']").val());
+            formData.append("newsTo", $("select[name='newsTo']").val());
+            axios.post("http://localhost:8080/onlineAdmain/api/News", formData).then(function (resqonse) {
+                    if (resqonse["data"]["status"]=="200"){
+                        alert(resqonse["data"]["msg"]);
+                        location.reload();
+                    }
+                    else {
+                        alert("添加失败");
+                    }
+            })
+
+        })
+
+    })
+
+
+</script>
+<script type="text/javascript">
+
+</script>
+
+</html>

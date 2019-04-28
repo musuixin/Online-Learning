@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>在线学习系统管理员注册</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="css/fontastic.css">
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <!-- Tweaks for older IEs-->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+
+<body>
+<div class="page login-page">
+    <div class="container d-flex align-items-center">
+        <div class="form-holder has-shadow">
+            <div class="row">
+                <!-- Logo & Information Panel-->
+                <div class="col-lg-6">
+                    <div class="info d-flex align-items-center">
+                        <div class="content">
+                            <div class="logo">
+                                <h1>在线学习平台</h1>
+                                <h2>管理员注册</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Form Panel    -->
+                <div class="col-lg-6 bg-white">
+                    <div class="form d-flex align-items-center">
+                        <div class="content">
+                            <form class="form-validate" onsubmit="return false" method="post" id="register">
+                                <div class="form-group">
+                                    <input id="username" type="text" name="admainName" required class="input-material"
+                                           onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                                    <label for="username" class="label-material">昵称</label>
+                                </div>
+                                <div class="form-group">
+                                    <input id="email" type="email" name="admainEmail" required class="input-material"
+                                           onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                                    <label for="email" class="label-material">电子邮箱</label>
+                                </div>
+                                <div class="form-group">
+                                    <input class="btn btn-primary" type="button" id="获取验证码" value="获取验证码"
+                                           onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <input type="number" id="inputCode" class="input-material" name="code" required
+                                           onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                                    <label for="inputCode" class="label-material">邮箱验证码</label>
+                                </div>
+                                <div class="form-group">
+                                    <input id="password" type="password" name="admainPwd" required
+                                           class="input-material" onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                                    <label for="passWord" class="label-material">密码</label>
+                                </div>
+                                <div class="form-group">
+                                    <input id="repassword" type="password" name="admainRePwd" required
+                                           class="input-material" onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                                    <label for="rePassWord" class="label-material">确认密码</label>
+                                </div>
+                                <div class="form-group">
+                                    <input id="invitationCode" type="number" name="invitationCode" required
+                                           class="input-material" onkeyup="this.value=this.value.replace(/\s+/g,'')">
+                                    <label for="invitationCode" class="label-material">管理员邀请码</label>
+                                </div>
+                                <div class="form-group">
+                                    <button id="regidter" class="btn btn-primary" type="submit">注册</button>
+                                </div>
+                            </form>
+                            <small>已有管理员账号？</small>
+                            <a href="login" class="signup">登陆</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- JavaScript files-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/popper.js/umd/popper.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/jquery.cookie/jquery.cookie.js"></script>
+<script src="vendor/chart.js/Chart.min.js"></script>
+<script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+<!-- Main File-->
+<script src="js/front.js"></script>
+<script src="js/register.js"></script>
+<script>
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+// Submit Coupon Form Fields
+.submit-coupon-sec{
+	padding-top: 70px;
+	form{
+		.form-group{
+			label{
+				color: $text-color;
+				font-size: 15px;
+				font-weight: bold;
+			}
+			.form-control{
+				background: $light;
+			}
+			.input-group{
+				input{
+					border-right: none;
+					&:focus + .input-group-addon{
+						border: 1px solid $primary-color;
+					}
+				}
+				.input-group-addon{
+					background: $light;
+					i{
+						font-size: 15px;
+						color: $dark-gray;
+						padding-right: 8px;
+					}
+					border-left: none !important;
+				}
+			}
+		}
+		.coupon-type{
+			padding: 40px 0 22px 0;
+			ul.coupon-types{
+				li{
+					margin-right: 10px;
+					cursor: pointer;
+					@include tablet {
+						margin: 5px;
+					}
+					a{
+						color: $primary-color;
+						display: block;
+						font-size: 14px;
+						text-decoration: none;
+						padding: 25px 0;
+						width: 170px;
+						text-align: center;
+						border: 1px solid $primary-color;
+						-webkit-border-radius: 3px;
+						        border-radius: 3px;
+						i{
+							display: block;
+							text-align: center;
+							font-size: 40px;
+						}
+					}
+					&.active{
+						a{
+							background: $primary-color;
+							color: $light;
+						}
+					}
+				}
+			}
+		}
+		button{
+			margin-top: 10px;
+		}
+	}
+	p{
+		margin: 70px 0 0 0;
+		font-size: 14px;
+		line-height: 26px;
+		color: $dark-gray;
+		letter-spacing: 0.01em;
+		a{
+			color: $primary-color;
+			text-decoration: underline;
+		}
+	}
+}

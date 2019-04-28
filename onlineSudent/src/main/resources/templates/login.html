@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Flat Login Form</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+
+  <link rel="stylesheet" href="css/style1.css">
+
+
+</head>
+
+<body>
+
+
+  <div class="container">
+    <div class="info">
+      <h1>在线学习系统</h1><span>学生<i class="fa fa-heart"></i>登陆</span>
+    </div>
+  </div>
+  <div class="form">
+    <div class="thumbnail"><img src="css/hat.svg" /></div>
+    <form class="register-form">
+      <input type=" text" placeholder="" />
+    <input type="password" placeholder="password" />
+    <input type="text" placeholder="email address" />
+    <button>注册</button>
+    <p class="message">已有账号？<a href="#">登陆</a></p>
+    </form>
+    <form class="login-form" id="Login" onsubmit="return false">
+      <input type="text" placeholder="您的学生ID" name="studentId" required />
+      <input type="password" placeholder="密码" name="studentPwd" required />
+      <button id="blogin">登陆</button>
+      <p class="message">还没有学习账号？<a href="#">注册一个账号</a></p>
+    </form>
+  </div>
+  <script src='js/jquery.min.js'></script>
+
+
+
+  <script src="js/index.js"></script>
+  <script>
+    $("#Login").submit(function () {
+      $("#blogin").text("登陆中...");
+      $.ajax({
+        type: "post",
+        url: "http://localhost:8080/onlineStudent/api/Login",
+        data: $("#Login").serialize(),
+        success: function (data) {
+          if (data["status"] == "400") {
+            alert(data["msg"]);
+            $("#blogin").text("登陆");
+          }
+          if (data["status"] == "200") {
+            window.location.href = "index"
+          }
+        },
+        error: function () {
+          alert("出现不可预知的错误")
+          $("#blogin").text("登陆");
+
+        }
+
+
+      });
+
+
+    })
+
+
+
+  </script>
+
+
+
+</body>
+
+</html>

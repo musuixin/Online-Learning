@@ -27,10 +27,13 @@ public class ControllerLogin {
 
     @PostMapping("/Login")
     HashMap<String, Object> Login(StudentPoJo studentPoJo, HttpSession httpSession) {
+        hashMap.put("data", null);
         studentPoJo.setStudentPwd(EncryptUtil.md5AndSha(studentPoJo.getStudentPwd()));
         System.out.println(studentPoJo);
         StudentPoJo studentLogin = studentServiceImple.studentLogin(studentPoJo);
         if (studentLogin == null) {
+
+
             hashMap.put("status", "400");
             hashMap.put("msg", "用户名或密码错误");
             return hashMap;

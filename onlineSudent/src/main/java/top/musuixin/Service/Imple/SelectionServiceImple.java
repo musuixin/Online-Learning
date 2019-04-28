@@ -33,13 +33,13 @@ public class SelectionServiceImple implements SelectionService {
             return hashMap;
         }
         System.out.println(studentSelect);
-        if (studentSelect.getAssess() == null||studentSelect.getAssess().equals("")) {
+        if (studentSelect.getAssess() == null||studentSelect.getAssess().equals("未评价")) {
             selectionMapper.addSelectionAssess(studentPoJo, selectionPojo);
             hashMap.put("status", "200");
             hashMap.put("msg", "成功评论");
             return hashMap;
         }
-        if (!studentSelect.getAssess().equals("")) {
+        if (!studentSelect.getAssess().equals("未评价")) {
             hashMap.put("status", "400");
             hashMap.put("msg", "已经评论了");
             return hashMap;

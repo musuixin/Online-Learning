@@ -2,6 +2,9 @@ server:
   port: 8080
   servlet:
     context-path: "/onlineAdmain"
+
+  tomcat:
+    max-http-post-size: 100MB
 spring:
   datasource:
     username: root
@@ -14,8 +17,8 @@ spring:
       force-response: true
   servlet:
     multipart:
-      max-file-size: 10MB
-      max-request-size: 100MB
+      max-file-size: 1000MB
+      max-request-size: 1000MB
 logging:
   path: E:\
   level:

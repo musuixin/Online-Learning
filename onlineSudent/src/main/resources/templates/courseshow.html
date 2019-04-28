@@ -98,7 +98,7 @@
                 <div class="product-details">
 
                     <h1 class="product-title" v-text="data.courseName"></h1>
-                    <button class="btn btn-transparent btn-light offset-10">
+                    <button class="btn btn-transparent btn-light offset-10" @click="selectionCourse()">
                         学习此课
                     </button>
 
@@ -153,7 +153,7 @@
                             </div>
                             <div class="tab-pane fade" id="pills-contact" role="tabpanel"
                                  aria-labelledby="pills-contact-tab">
-                                <h3 class="tab-title">评价</h3>
+                                <h3 class="tab-title">选课学生课程评价</h3>
                                 <div class="product-review">
                                     <div class="media" v-for="(item, index) in assess" :key="index">
 
@@ -259,7 +259,8 @@
         data() {
             return {
                 data: null,
-                assess: null
+                assess: null,
+                newAssess: null
             }
         },
         created() {
@@ -279,7 +280,6 @@
 
             addassess: function () {
                 var id = /\d+/.exec(location.pathname);
-
                 if (this.newAssess == null) {
                     bootbox.alert({
                         buttons: {
@@ -292,6 +292,7 @@
                     })
                     return;
                 }
+                var _this = this;
                 var data = new FormData();
                 data.append("assess", this.newAssess);
                 data.append("courseId", id[0]);
@@ -304,9 +305,18 @@
                     },
                     message: response["data"]["msg"],
                     callback: function () {
-                        location.reload();
+                        _this.reloadCourseInfo();
                     }
                 }))
+            },
+            reloadCourseInfo: function () {
+                var id = /\d+/.exec(location.pathname);
+
+                axios.get("http://localhost:8080/onlineStudent/api/getSelectInfo", {
+                    params: {
+                        courseId: id[0]
+                    }
+                }).then(response => (this.assess = response["data"]["data"]))
             }
         }
     })

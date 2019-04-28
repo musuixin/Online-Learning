@@ -154,12 +154,14 @@
             formData.append("newsText", editor.txt.html());
             formData.append("newsTitle", $("input[name='newsTitle']").val());
             formData.append("newsTo", $("select[name='newsTo']").val());
+            $("#Release").text("发布中...");
             axios.post("http://localhost:8080/onlineAdmain/api/News", formData).then(function (resqonse) {
                     if (resqonse["data"]["status"]=="200"){
                         alert(resqonse["data"]["msg"]);
                         location.reload();
                     }
                     else {
+                        $("#Release").text("发布");
                         alert("添加失败");
                     }
             })

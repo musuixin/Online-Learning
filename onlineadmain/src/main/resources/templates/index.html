@@ -132,7 +132,7 @@
                         aria-valuemax="100" class="progress-bar bg-orange"></div>
                     </div>
                   </div>
-                  <div class="number"><strong>50</strong></div>
+                  <div class="number"><strong v-text="totalTime" ></strong></div>
                 </div>
               </div>
             </div>
@@ -185,14 +185,16 @@
       return {
         teacherNumber: 0,
         studentNumber: 0,
-        courserNumber: 0
+        courserNumber: 0,
+        totalTime:0
       }
     },
     created() {
-      axios.get("http://localhost:8080/onlineAdmain/api/getNumber").then(
+      axios.get("/onlineAdmain/api/getNumber").then(
         response => (this.teacherNumber = response["data"]["data"]["teacherNumber"],
           this.studentNumber = response["data"]["data"]["studentNumber"],
           this.courserNumber = response["data"]["data"]["courserNumber"],
+                this.totalTime = response["data"]["data"]["totalTime"],
           this.echarts())
       )
     },

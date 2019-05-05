@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Content-Language" content="en" />
+  <meta name="msapplication-TileColor" content="#2d89ef">
+  <meta name="theme-color" content="#4188c9">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
+  <!-- Generated: 2018-04-06 16:27:42 +0200 -->
+  <title>课程列表</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Dashboard Core -->
+  <link href="./assets/css/dashboard.css" rel="stylesheet" />
+
+
+  <link href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" rel="stylesheet">
+
+</head>
+
+<body class="">
+  <div class="page">
+    <div class="page-main">
+
+
+      <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-1 ml-auto">
+              <a href="login" class="btn btn-blue">退出</a>
+            </div>
+            <div class="col-lg order-lg-first">
+              <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+                <li class="nav-item">
+                  <a href="./index" class="nav-link"><i class="fe fe-home"></i>首页</a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="./newslist" class="nav-link"><i class="fe fe-box"></i>
+                    教师资讯</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="./courseList" class="nav-link  active"><i class="fe fe-calendar"></i>
+                    现有课程</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="./addCourse" class="nav-link"><i class="fe fe-check-square"></i>新增课程</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="./upCourse" class="nav-link"><i
+                          class="fe fe-check-square"></i>修改课程</a>
+                </li>
+                <li class="nav-item">
+                  <a href="./user" class="nav-link"><i class="fe fe-image"></i>个人信息</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="my-3 my-md-5">
+        <div class="container">
+          <div class="page-header">
+            <h1 class="page-title">
+              您的课程列表
+            </h1>
+          </div>
+          <div class="row row-cards">
+
+            <div class="col-lg-12">
+              <div class="card">
+                <table class="table card-table table-vcenter" id="app">
+                  <tr v-for="(item, index) in data" :key="index">
+                    <td><img :src="item.courseImg" alt="" class="h-8"></td>
+                    <td v-text="'课程ID:'+item.courseId">
+                    </td>
+                    <td v-text="item.courseName">
+                      Vue.js深入浅出
+                    </td>
+                    <td class="text-right text-muted d-none d-md-table-cell text-nowrap" v-text="item.courseTime"></td>
+                    <td class="text-right">
+                      <button class="btn btn-danger" @click="deleteCourse(item.courseId,index)">删除</button>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row align-items-center flex-row-reverse">
+          <div class="col-auto ml-lg-auto">
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <ul class="list-inline list-inline-dots mb-0">
+                  <li class="list-inline-item"><a href="#">教师系统</a></li>
+                  <li class="list-inline-item"><a href="#">@2019</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+<script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+<script>
+  new Vue({
+    el: "#app",
+    data() {
+      return {
+        data: null
+      }
+    },
+    created() {
+      axios.get("/onlineTeacher/api/course").then(response => (this.data = response["data"]["data"]))
+    },
+    methods: {
+      deleteCourse: function (courseId, index) {
+        if (confirm("确定删除？？")) {
+          axios.delete("/onlineTeacher/api/course", {
+            params: {
+              courseId: courseId
+            }
+          }).then(this.data.splice(index, 1))
+        }
+        else {
+
+        }
+
+      }
+    },
+  })
+
+
+</script>
+
+</html>

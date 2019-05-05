@@ -3,6 +3,9 @@ package top.musuixin.Config;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +30,8 @@ import java.util.List;
 @Configuration
 @EnableCaching
 public class SpringMVCConfig implements WebMvcConfigurer {
+    @Autowired
+    MyInterceptorLogin myInterceptorLogin;
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login.html");
@@ -34,13 +39,18 @@ public class SpringMVCConfig implements WebMvcConfigurer {
         registry.addViewController("/index").setViewName("index.html");
         registry.addViewController("/").setViewName("login.html");
         registry.addViewController("/courseList").setViewName("courseList.html");
-
+        registry.addViewController("/study").setViewName("study.html");
+        registry.addViewController("/user").setViewName("user.html");
 
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(new MyInterceptorLogin()).addPathPatterns("/login.html");
+
+        registry.addInterceptor(myInterceptorLogin).addPathPatterns("/index","/newsList","/courseList","/courseList","/","/study","/user");
+        registry.addInterceptor(myInterceptorLogin).addPathPatterns("/api/*").excludePathPatterns("/api/Login","/error");
+
+
     }
 
     @Bean

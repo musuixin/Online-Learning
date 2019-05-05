@@ -9,7 +9,10 @@ import top.musuixin.Pojo.StudentPoJo;
 import top.musuixin.Service.Imple.StudentServiceImple;
 import top.musuixin.Util.EncryptUtil;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.net.HttpCookie;
 import java.util.HashMap;
 
 /**
@@ -26,25 +29,26 @@ public class ControllerLogin {
     StudentServiceImple studentServiceImple;
 
     @PostMapping("/Login")
-    HashMap<String, Object> Login(StudentPoJo studentPoJo, HttpSession httpSession) {
+    HashMap<String, Object> Login(StudentPoJo studentPoJo, HttpSession httpSession, HttpServletResponse response) {
         hashMap.put("data", null);
         studentPoJo.setStudentPwd(EncryptUtil.md5AndSha(studentPoJo.getStudentPwd()));
         System.out.println(studentPoJo);
         StudentPoJo studentLogin = studentServiceImple.studentLogin(studentPoJo);
         if (studentLogin == null) {
-
-
             hashMap.put("status", "400");
             hashMap.put("msg", "用户名或密码错误");
             return hashMap;
         }
+        hashMap.put("status", "200");
         httpSession.setAttribute("StudentId", studentPoJo.getStudentId());
         System.out.println(httpSession.getAttribute("StudentId") + "登陆成功");
-        hashMap.put("status", "200");
+        String s = String.valueOf(studentPoJo.getStudentId());
+        Cookie httpCookie = new Cookie("studentIdPwd", s + "@@" + studentPoJo.getStudentPwd());
+        httpCookie.setPath("/");
+        httpCookie.setMaxAge(99999999);
+        response.addCookie(httpCookie);
         hashMap.put("msg", "登陆成功");
         return hashMap;
-
-
     }
 
 }

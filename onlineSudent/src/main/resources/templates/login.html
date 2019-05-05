@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Flat Login Form</title>
+  <title>学生登陆</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
@@ -27,11 +27,9 @@
   <div class="form">
     <div class="thumbnail"><img src="css/hat.svg" /></div>
     <form class="register-form">
-      <input type=" text" placeholder="" />
-    <input type="password" placeholder="password" />
-    <input type="text" placeholder="email address" />
-    <button>注册</button>
-    <p class="message">已有账号？<a href="#">登陆</a></p>
+      <p>不对外提供注册接口，请联系管理员登记核实真实身份后管理员将为您提供学生id与密码</p>
+
+      <p class="message">已有账号？<a href="#">登陆</a></p>
     </form>
     <form class="login-form" id="Login" onsubmit="return false">
       <input type="text" placeholder="您的学生ID" name="studentId" required />
@@ -50,7 +48,7 @@
       $("#blogin").text("登陆中...");
       $.ajax({
         type: "post",
-        url: "http://localhost:8080/onlineStudent/api/Login",
+        url: "/onlineStudent/api/Login",
         data: $("#Login").serialize(),
         success: function (data) {
           if (data["status"] == "400") {

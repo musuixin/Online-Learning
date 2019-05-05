@@ -14,7 +14,7 @@ $(function () {
         obj.removeAttr("disabled");
         $.ajax({
             type: "get",
-            url: "http://localhost:8080/onlineAdmain/registerApi",
+            url: "/onlineAdmain/registerApi",
             data: $("form").serialize(),
             success: function (data) {
                 if (data["status"] == "400") {
@@ -22,7 +22,7 @@ $(function () {
                 }
                 if (data["status"] == "200"){
                     alert(data["msg"]);
-                    window.location.href="http://localhost:8080/onlineAdmain/login";
+                    window.location.href="/onlineAdmain/login";
                 }
 
             }
@@ -44,7 +44,7 @@ $(function () {
 
         $.ajax({
             type: "get",
-            url: "http://localhost:8080/onlineAdmain/getEmailCode",
+            url: "/onlineAdmain/getEmailCode",
             data: $("form").serialize(),
             success: function (data) {
                 if (data["status"] == "400") {

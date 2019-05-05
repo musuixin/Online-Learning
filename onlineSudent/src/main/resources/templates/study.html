@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+
+  <!-- SITE TITTLE -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>学习中心</title>
+
+  <!-- FAVICON -->
+  <link href="img/favicon.png" rel="shortcut icon">
+  <!-- PLUGINS CSS STYLE -->
+  <!-- <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"> -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap-slider.css">
+  <!-- Font Awesome -->
+  <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Owl Carousel -->
+  <link href="plugins/slick-carousel/slick/slick.css" rel="stylesheet">
+  <link href="plugins/slick-carousel/slick/slick-theme.css" rel="stylesheet">
+  <!-- Fancy Box -->
+  <link href="plugins/fancybox/jquery.fancybox.pack.css" rel="stylesheet">
+  <link href="plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+  <!-- CUSTOM CSS -->
+  <link href="css/style.css" rel="stylesheet">
+
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+
+<body class="body-wrapper">
+
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="navbar navbar-expand-lg navbar-light navigation">
+            <a class="navbar-brand" href="index">
+              <!-- <img src="images/logo.png" alt=""> -->
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto main-nav ">
+                <li class="nav-item">
+                  <a class="nav-link" href="index">学生主页</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="courseList">课程展示</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="newsList">学生资讯中心</a>
+                </li>
+
+                <li class="nav-item dropdown dropdown-slide   active">
+                  <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    个人中心 <span><i class="fa fa-angle-down"></i></span>
+                  </a>
+                  <!-- Dropdown list -->
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item  active" href="study">课程学习</a>
+                    <a class="dropdown-item" href="user">个人信息</a>
+                  </div>
+                </li>
+              </ul>
+              <ul class="navbar-nav ml-auto mt-10">
+                <li class="nav-item">
+                  <a class="nav-link login-button" href="login">退出</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--==================================
+=            User Profile            =
+===================================-->
+  <section class="dashboard section">
+    <!-- Container Start -->
+    <div class="container">
+      <!-- Row Start -->
+
+      <div class="col-md-12 offset-md-1 col-lg-12 offset-lg-0">
+        <!-- Recently Favorited -->
+        <div class="widget dashboard-container my-adslist">
+          <h3 class="widget-header">我的课程</h3>
+          <table class="table product-dashboard-table" id="app1" v-cloak>
+            <thead>
+              <tr>
+                <th>封面</th>
+                <th>课程信息</th>
+                <th class="text-center">已学习时长</th>
+                <th class="text-center">操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(item, index) in data" :key="index">
+
+                <td class="product-thumb">
+                  <img width="80px" height="auto" :src="item.courseImg" alt="image description"></td>
+                <td class="product-details">
+                  <h3 class="title" v-text="item.courseName"></h3>
+                  <span class="add-id" v-html="'<strong>选课ID:</strong>'+item.selectionId"></span>
+                  <span class="status active" v-html="'<strong>状态</strong>'+item.state"></span>
+                  <span class="location" v-html="'<strong>总学时</strong>'+item.courseTime"></span>
+                </td>
+                <td class="product-category"><span class="categories" v-text="item.time+'分钟'">1h</span></td>
+                <td class="action" data-title="Action">
+                  <div class="">
+                    <ul class="list-inline justify-content-center">
+                      <li class="list-inline-item">
+                        <a @click="startStudy(item.selectionId)" data-toggle="'tooltip'" data-placement="top" title="学习"
+                          class="view">
+                          <i class="fa fa-eye"></i>
+                        </a>
+                      </li>
+
+                      <li class="list-inline-item">
+                        <a @click="deleteStudy(item.selectionId)" class="delete" :data-toggle="'tooltip'"
+                          data-placement="top" title="不想学了">
+                          <i class="fa fa-trash"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+
+
+
+            </tbody>
+          </table>
+
+        </div>
+
+
+
+      </div>
+    </div>
+    <!-- Row End -->
+    </div>
+    <!-- Container End -->
+  </section>
+  <!--============================
+=            Footer            =
+=============================-->
+
+
+  <footer class="footer-bottom">
+    <!-- Container Start -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-12">
+          <!-- Copyright -->
+          <div class="copyright">
+            <p>慕随心 © 2019
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Container End -->
+    <!-- To Top -->
+    <div class="top-to">
+      <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPTS -->
+  <script src="plugins/jQuery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/js/popper.min.js"></script>
+  <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script src="plugins/bootstrap/js/bootstrap-slider.js"></script>
+  <!-- tether js -->
+  <script src="plugins/tether/js/tether.min.js"></script>
+  <script src="plugins/raty/jquery.raty-fa.js"></script>
+  <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+  <script src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+  <script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
+  <script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
+  <!-- google map -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+  <script src="plugins/google-map/gmap.js"></script>
+  <script src="js/script.js"></script>
+  <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+
+  <script src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script>
+
+  <script>
+
+    new Vue({
+      el: "#app1",
+      data() {
+        return {
+          data: null
+        }
+      },
+
+      created() {
+        axios.get('/onlineStudent/api/studyData').then(response => (this.data = (response["data"]["data"])))
+      },
+      methods: {
+        startStudy: function (id) {
+          var _this=this;
+          axios.get("/onlineStudent/api/startStudy", {
+            params: {
+              selectionId: id
+            }
+          }).then(function (response) {
+            if (response["data"]["status"] == "200") {
+              bootbox.alert({
+                buttons: {
+                  ok: {
+                    label: '停止学习...',
+                    className: 'btn-outline-danger'
+                  }
+                },
+                message:response["data"]["data"],
+                callback: function () {
+                  axios.get("/onlineStudent/api/stopStudy",{
+                    params:{
+                      selectionId: id
+                    }
+                  }).then(function (response) {
+                    console.log(response['data']["msg"]);
+                    bootbox.alert({
+                      buttons: {
+                        ok: {
+                          label: '知道了',
+                          className: 'btn-success'
+                        }
+                      },
+                      message: "这次您的学习时间为"+response['data']["msg"]+"分钟(不足1分钟的计零)",
+                    });
+                    _this.reLoadData();
+                    }
+                )
+                }
+              })
+            }
+            else{
+              bootbox.alert({
+                buttons: {
+                  ok: {
+                    label: '知道了',
+                    className: 'btn-outline-danger'
+                  }
+                },
+                message: "发生学习错误请重试",
+             
+              })
+            }
+          }
+          )
+        },
+        deleteStudy: function (id) {
+          var _this=this;
+          bootbox.confirm({
+            buttons: {
+              confirm: {
+                label: '不学了',
+                className: 'btn-danger'
+              },
+              cancel: {
+                label: '学吧',
+                className: 'btn-success'
+              }
+            },
+
+            message: "确定不学了？？",
+            callback: function (result) {
+              if (result){
+                axios.delete('/onlineStudent/api/deleteStudy',{
+                  params:{
+                    "selectionId":id
+                  }
+                }).then(response=>(_this.reLoadData()))
+              }
+            }
+          })
+        },
+      reLoadData:function () {
+        axios.get('/onlineStudent/api/studyData').then(response => (this.data = (response["data"]["data"])))
+
+      }
+      }
+
+    })
+
+  </script>
+</body>
+
+</html>

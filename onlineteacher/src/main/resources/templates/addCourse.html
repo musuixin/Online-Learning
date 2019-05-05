@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Language" content="en"/>
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#4188c9">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico"/>
+    <!-- Generated: 2018-04-06 16:27:42 +0200 -->
+    <title>增加课程</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Dashboard Core -->
+    <link href="./assets/css/dashboard.css" rel="stylesheet"/>
+    <script src="./assets/js/dashboard.js"></script>
+    <!-- c3.js Charts Plugin -->
+    <link href="./assets/plugins/charts-c3/plugin.css" rel="stylesheet"/>
+    <script src="./assets/plugins/charts-c3/plugin.js"></script>
+    <!-- Google Maps Plugin -->
+    <link href="./assets/plugins/maps-google/plugin.css" rel="stylesheet"/>
+    <script src="./assets/plugins/maps-google/plugin.js"></script>
+    <!-- Input Mask Plugin -->
+    <script src="./assets/plugins/input-mask/plugin.js"></script>
+</head>
+
+<body class="">
+<div class="page">
+    <div class="page-main">
+
+        <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-1 ml-auto">
+                        <a href="login" class="btn btn-blue">退出</a>
+                    </div>
+                    <div class="col-lg order-lg-first">
+                        <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+                            <li class="nav-item">
+                                <a href="./index" class="nav-link"><i class="fe fe-home"></i>首页</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./newslist" class="nav-link"><i class="fe fe-box"></i>
+                                    教师资讯</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="./courseList" class="nav-link "><i class="fe fe-calendar"></i>
+                                    现有课程</a>
+
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="./addCourse" class="nav-link  active"><i
+                                        class="fe fe-check-square"></i>新增课程</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="./upCourse" class="nav-link"><i
+                                        class="fe fe-check-square"></i>修改课程</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./user" class="nav-link"><i class="fe fe-image"></i>个人信息</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="my-3 my-md-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <form method="post" class="card" id="app" @submit.prevent="upload()" onsubmit="return false">
+                            <div class="card-header">
+                                <h3 class="card-title">新增加课程信息</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-12">
+                                        <div class="form-group">
+                                            <div class="form-label">课程封面</div>
+                                            <div class="custom-file">
+                                                <input type="file" id="img" class="custom-file-input"
+                                                       name="example-file-input-custom"
+                                                       required>
+                                                <label class="custom-file-label">选择图片</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">课程名</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="课程名"
+                                                       aria-label="Username"
+                                                       aria-describedby="basic-addon1" required v-model="courseName">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">课程学时</label>
+                                            <div class="input-group">
+                                                <input type="number" class="form-control" placeholder="Your subdomain"
+                                                       aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                                       required
+                                                       v-model="courseTime">
+                                                <span class="input-group-append" id="basic-addon2">
+                            <span class="input-group-text">学时</span>
+                          </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">课程简述</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Username"
+                                                       aria-label="Username"
+                                                       aria-describedby="basic-addon1" required v-model="courseText">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-0">
+                                            <label class="form-label">课程详述</label>
+                                            <textarea rows="5" class="form-control" value="Mike"
+                                                      v-model="courseInfo"></textarea>
+                                        </div>
+                                        <label class="form-label">课程内容</label>
+                                        <div id="editor">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-right">
+                                <div class="d-flex">
+                                    <button type="submit" class="btn btn-primary ml-auto" id="add">增加</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row align-items-center flex-row-reverse">
+                <div class="col-auto ml-lg-auto">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <ul class="list-inline list-inline-dots mb-0">
+                                <li class="list-inline-item"><a href="#">教师系统</a></li>
+                                <li class="list-inline-item"><a href="#">@2019</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+
+<script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+<script src="https://cdn.bootcss.com/wangEditor/10.0.13/wangEditor.min.js"></script>
+
+
+<script>
+    new Vue({
+        el: "#app",
+
+        mounted() {
+            var E = window.wangEditor
+            this.editor = new E('#editor')
+            this.editor.customConfig.uploadImgShowBase64 = true;
+            this.editor.create();
+            this.editor.txt.html();
+        },
+        data() {
+            return {
+                courseInfo: null,
+                courseName: null,
+                courseText: null,
+                courseTime: null,
+                editor: null
+
+            }
+        },
+        methods: {
+            upload: function () {
+                var data = new FormData();
+                data.append("courseContent", this.editor.txt.html())
+                data.append("img", $("#img")[0].files[0]);
+                data.append("courseInfo", this.courseInfo);
+                data.append("courseName", this.courseName);
+                data.append(" courseText", this.courseText);
+                data.append(" courseTime", this.courseTime);
+                if (this.courseInfo == null) {
+                    return
+                }
+                if (this.editor.txt.html() == "<p><br></p>") {
+                    return
+                }
+                $("#add").text("上传中..")
+                axios.post("/onlineTeacher/api/course", data).then(function (response) {
+                    if (response["data"]["status"] == "200") {
+                        alert(response["data"]["msg"]);
+                        location.reload();
+                    } else {
+                        alert(response["data"]["msg"]);
+                        $("#add").text("增加")
+                    }
+                })
+            }
+        },
+
+
+    })
+
+
+</script>
+
+</html>

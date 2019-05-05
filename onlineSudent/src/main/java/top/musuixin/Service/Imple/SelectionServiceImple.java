@@ -33,17 +33,37 @@ public class SelectionServiceImple implements SelectionService {
             return hashMap;
         }
         System.out.println(studentSelect);
-        if (studentSelect.getAssess() == null||studentSelect.getAssess().equals("未评价")) {
+        if (studentSelect.getAssess().equals("未评论")) {
             selectionMapper.addSelectionAssess(studentPoJo, selectionPojo);
             hashMap.put("status", "200");
             hashMap.put("msg", "成功评论");
             return hashMap;
         }
-        if (!studentSelect.getAssess().equals("未评价")) {
+        if (!studentSelect.getAssess().equals("未评论")) {
             hashMap.put("status", "400");
             hashMap.put("msg", "已经评论了");
             return hashMap;
         }
+        return hashMap;
+    }
+
+    @Override
+    public HashMap<String, Object> addSelection(SelectionPojo selectionPojo) {
+
+        SelectionPojo selectionPojo1 = selectionMapper.querySelection(selectionPojo);
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        if (selectionPojo1 != null) {
+            hashMap.put("status", "400");
+            hashMap.put("msg", "已经选了此课，请到个人中心--课程学习中学习");
+            return hashMap;
+        }
+        selectionPojo.setState("正在学习");
+        selectionPojo.setTime("0");
+        selectionPojo.setAssess("未评论");
+        selectionMapper.addSelect(selectionPojo);
+        hashMap.put("status", "200");
+        hashMap.put("msg", "选课成功");
         return hashMap;
     }
 }

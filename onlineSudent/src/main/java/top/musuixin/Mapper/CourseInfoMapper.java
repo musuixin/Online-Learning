@@ -21,4 +21,6 @@ public interface CourseInfoMapper {
 
     @Select("SELECT * from course,teacher where course.teacherId=teacher.teacherId and courseId=#{courseId} ")
     CourseInfoPojo getCourse(CourseInfoPojo courseInfoPojo);
+    @Select("select courseContent from course,selection where course.courseId=selection.courseId and selectionId=#{selectionId} ")
+    CourseInfoPojo selectContent(String selectionId);
 }

@@ -12,7 +12,11 @@ import java.io.Serializable;
 @Component
 @Data
 public class SelectionPojo implements Serializable {
+    private String selectionId;
     private  String studentName;
     private String courseId;
+    private String studentId;
     private  String assess;
+    private String time;
+    private String state;
 }

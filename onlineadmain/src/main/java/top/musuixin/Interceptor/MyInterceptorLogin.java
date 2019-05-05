@@ -12,7 +12,7 @@ public class MyInterceptorLogin implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Object email = request.getSession().getAttribute("email");
         if (email == null) {
-            response.sendRedirect("");
+            response.sendRedirect("login");
             return false;
         }
         return true;

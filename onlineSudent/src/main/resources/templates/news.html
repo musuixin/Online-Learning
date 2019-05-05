@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Classimax</title>
+    <title>学生新闻</title>
 
     <!-- FAVICON -->
     <link href="img/favicon.png" rel="shortcut icon">
@@ -172,7 +172,7 @@
         },
         created() {
             var id = /\d+/.exec(location.pathname);
-            axios.get("http://localhost:8080/onlineStudent/api/getNewsText", {
+            axios.get("/onlineStudent/api/getNewsText", {
                 params: {
                     newsId: id[0]
                 }

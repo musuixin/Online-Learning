@@ -144,7 +144,7 @@
         el: '#app',
         methods: {
             pageChange1(pageIndex) {
-                axios.get('http://localhost:8080/onlineAdmain/api/selectionData', {
+                axios.get(' /onlineAdmain/api/selectionData', {
                 params: {
                     num:pageIndex
                 }
@@ -153,7 +153,7 @@
             },
         },
         created() {
-            axios.get('http://localhost:8080/onlineAdmain/api/selectionData', {
+            axios.get(' /onlineAdmain/api/selectionData', {
                 params: {
                     num: 1
                 }

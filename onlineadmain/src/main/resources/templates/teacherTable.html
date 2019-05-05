@@ -198,7 +198,7 @@
         el: '#app',
         methods: {
             pageChange1(pageIndex) {
-                axios.get('http://localhost:8080/onlineAdmain/api/teacher', {
+                axios.get(' /onlineAdmain/api/teacher', {
                     params: {
                         num: pageIndex
                     }
@@ -212,7 +212,7 @@
             customCompFunc(params) {
                 if (confirm("确定删除" + params.rowData["teacherName"] + "?" + "将会删除此教师所有信息")) {
                     var _this = this;
-                    axios.delete("http://localhost:8080/onlineAdmain/api/teacher", {
+                    axios.delete(" /onlineAdmain/api/teacher", {
                         params: {
                             teacherId: params.rowData["teacherId"]
                         }
@@ -229,7 +229,7 @@
             }
         },
         created() {
-            axios.get('http://localhost:8080/onlineAdmain/api/teacher', {
+            axios.get(' /onlineAdmain/api/teacher', {
                 params: {
                     num: 1
                 }
@@ -283,12 +283,12 @@
     $(function () {
         $("#addForm").submit(function () {
             // alert("xx");
-            // axios.get('http://localhost:8080/onlineAdmain/api/student', {
+            // axios.get(' /onlineAdmain/api/student', {
             //   params: {
             //     num: 1
             //   }
             // })
-            axios.post("http://localhost:8080/onlineAdmain/api/teacher", $("#addForm").serialize())
+            axios.post(" /onlineAdmain/api/teacher", $("#addForm").serialize())
 
         });
 

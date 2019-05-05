@@ -21,7 +21,7 @@ public class NewsServiceImple implements NewsService {
 
 
     @Override
-
+//    @Cacheable("newlist")
     public LinkedList<NewsPojo> getNews() {
         return newsMapper.getNewsList();
     }

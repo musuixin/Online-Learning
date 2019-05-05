@@ -12,6 +12,7 @@
     <artifactId>onlineadmain</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>onlineadmain</name>
+    <packaging>war</packaging>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -105,6 +106,7 @@
     </dependencies>
 
     <build>
+        <finalName>onlineAdmain</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

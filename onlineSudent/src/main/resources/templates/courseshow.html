@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Classimax</title>
+    <title>课程展示</title>
 
 
     <!-- PLUGINS CSS STYLE -->
@@ -98,7 +98,7 @@
                 <div class="product-details">
 
                     <h1 class="product-title" v-text="data.courseName"></h1>
-                    <button class="btn btn-transparent btn-light offset-10" @click="selectionCourse()">
+                    <button class="btn btn-transparent btn-light offset-10" @click="addSelection()">
                         学习此课
                     </button>
 
@@ -265,12 +265,12 @@
         },
         created() {
             var id = /\d+/.exec(location.pathname);
-            axios.get("http://localhost:8080/onlineStudent/api/getCourse", {
+            axios.get(" /onlineStudent/api/getCourse", {
                 params: {
                     courseId: id[0]
                 }
             }).then(response => (this.data = response["data"]["data"]));
-            axios.get("http://localhost:8080/onlineStudent/api/getSelectInfo", {
+            axios.get(" /onlineStudent/api/getSelectInfo", {
                 params: {
                     courseId: id[0]
                 }
@@ -289,14 +289,14 @@
                             }
                         },
                         message: "请输入内容"
-                    })
+                    });
                     return;
                 }
                 var _this = this;
                 var data = new FormData();
                 data.append("assess", this.newAssess);
                 data.append("courseId", id[0]);
-                axios.post("http://localhost:8080/onlineStudent/api/addSelectAssess", data).then(response => bootbox.alert({
+                axios.post(" /onlineStudent/api/addSelectAssess", data).then(response => bootbox.alert({
                     buttons: {
                         ok: {
                             label: '知道了',
@@ -307,16 +307,32 @@
                     callback: function () {
                         _this.reloadCourseInfo();
                     }
-                }))
+                }));
+                this.newAssess=null;
             },
             reloadCourseInfo: function () {
                 var id = /\d+/.exec(location.pathname);
 
-                axios.get("http://localhost:8080/onlineStudent/api/getSelectInfo", {
+                axios.get(" /onlineStudent/api/getSelectInfo", {
                     params: {
                         courseId: id[0]
                     }
                 }).then(response => (this.assess = response["data"]["data"]))
+            },
+            addSelection: function () {
+                var id = /\d+/.exec(location.pathname);
+                var data = new FormData();
+                data.append("courseId", id[0]);
+                axios.post(" /onlineStudent/api/addSelection", data).then(response => bootbox.alert({
+                    buttons: {
+                        ok: {
+                            label: '知道了',
+                            className: 'btn-outline-success'
+                        }
+                    },
+                    message: response["data"]["msg"]
+                }))
+
             }
         }
     })

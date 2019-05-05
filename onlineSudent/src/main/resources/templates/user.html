@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+
+	<!-- SITE TITTLE -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>信息中心</title>
+
+	<!-- FAVICON -->
+	<link href="img/favicon.png" rel="shortcut icon">
+	<!-- PLUGINS CSS STYLE -->
+	<!-- <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"> -->
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap-slider.css">
+	<!-- Font Awesome -->
+	<link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<!-- Owl Carousel -->
+	<link href="plugins/slick-carousel/slick/slick.css" rel="stylesheet">
+	<link href="plugins/slick-carousel/slick/slick-theme.css" rel="stylesheet">
+	<!-- Fancy Box -->
+	<link href="plugins/fancybox/jquery.fancybox.pack.css" rel="stylesheet">
+	<link href="plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+	<!-- CUSTOM CSS -->
+	<link href="css/style.css" rel="stylesheet">
+
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+
+<body class="body-wrapper">
+
+
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<nav class="navbar navbar-expand-lg navbar-light navigation">
+						<a class="navbar-brand" href="index">
+							<!-- <img src="images/logo.png" alt=""> -->
+						</a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse"
+							data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+							aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto main-nav ">
+								<li class="nav-item ">
+									<a class="nav-link" href="index">学生主页</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="courseList">课程展示</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="newsList">学生资讯中心</a>
+								</li>
+
+								<li class="nav-item dropdown dropdown-slide active">
+									<a class="nav-link dropdown-toggle" href="" data-toggle="dropdown"
+										aria-haspopup="true" aria-expanded="false">
+										个人中心 <span><i class="fa fa-angle-down"></i></span>
+									</a>
+									<!-- Dropdown list -->
+									<div class="dropdown-menu">
+										<a class="dropdown-item" href="study">课程学习</a>
+										<a class="dropdown-item active" href="user">个人信息</a>
+									</div>
+								</li>
+							</ul>
+							<ul class="navbar-nav ml-auto mt-10">
+								<li class="nav-item">
+									<a class="nav-link login-button" href="login">退出</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--==================================
+=            User Profile            =
+===================================-->
+
+	<section class="user-profile section" id="app">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 offset-md-1 col-lg-3 offset-lg-0">
+					<div class="sidebar">
+						<!-- User Widget -->
+						<div class="widget user text-center">
+							<!-- User Image -->
+							<div class="image d-flex justify-content-center">
+								<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556645563542&di=e9e2d807940cfdf55fb4b6d9d0fc1d64&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201811%2F04%2F20181104203324_xfeme.thumb.700_0.jpg"
+									alt="" class="">
+							</div>
+							<!-- User Name -->
+							<h5 class="text-center" v-text="info.studentName"></h5>
+							<kbd>性别:</kbd><small v-text="info.studentSex"></small><br>
+							<kbd>年龄:</kbd><small v-text="info.studentAge"></small><br>
+							<kbd>职业:</kbd><small v-text="info.studentOc"></small>
+
+						</div>
+						<!-- Dashboard Links -->
+
+					</div>
+				</div>
+				<div class="col-md-10 offset-md-1 col-lg-9 offset-lg-0">
+					<!-- Edit Profile Welcome Text -->
+					<div class="widget welcome-message">
+						<h2>编辑个人信息</h2>
+						<p>在这里可以修改个人信息</p>
+					</div>
+					<!-- Edit Personal Info -->
+					<div class="row">
+						<div class="col-lg-6 col-md-6">
+							<div class="widget personal-info">
+								<h3 class="widget-header user">个人信息</h3>
+								<form action="" onsubmit="return false" @submit.prevent="change">
+									<!-- First Name -->
+									<div class="form-group">
+										<label for="first-name">名字</label>
+										<input v-model="info.studentName" type="text" class="form-control"
+											id="first-name" required>
+									</div>
+									<div class="form-group">
+										<label for="my-input">性别</label>
+										<select id="sex">
+											<option>男</option>
+											<option>女</option>
+										</select>
+
+									</div>
+
+									<div class="form-group">
+										<label for="my-input">职业</label>
+										<select id="Oc" class="form-control">
+											<option>大学生</option>
+											<option>IT</option>
+											<option>自由职业</option>
+											<option>公务员</option>
+											<option>其他</option>
+										</select>
+									</div>
+
+									<div class="form-group">
+										<label for="last-name">年龄</label>
+										<input type="number" class="form-control" id="last-name" required
+											v-model="info.studentAge">
+									</div>
+									<!-- Checkbox -->
+									<!-- Submit button -->
+									<button class="btn btn-transparent" type="submit">保存更改</button>
+								</form>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6">
+							<!-- Change Password -->
+							<div class="widget change-password">
+								<h3 class="widget-header user">修改密码</h3>
+								<form action="#" @submit.prevent="pwd()">
+						
+									<!-- New Password -->
+									<div class="form-group">
+										<label for="conpassword">新密码</label>
+										<input v-model="studentPwd" type="password" class="form-control"
+											id="confirm-password" required>
+									</div>
+									<!-- Confirm New Password -->
+									<div class="form-group">
+										<label for="repassword">确认密码</label>
+										<input v-model="reStudentPwd" type="password" class="form-control"
+											id="confirm-password" required>
+									</div>
+									<!-- Submit Button -->
+									<button class="btn btn-transparent" type="submit">保存密码</button>
+								</form>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!--============================
+=            Footer            =
+
+	<!-- Footer Bottom -->
+	<footer class="footer-bottom">
+		<!-- Container Start -->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-12">
+					<!-- Copyright -->
+					<div class="copyright">
+						<p>慕随心 © 2019
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Container End -->
+		<!-- To Top -->
+		<div class="top-to">
+			<a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
+		</div>
+	</footer>
+
+
+	<!-- JAVASCRIPTS -->
+	<script src="plugins/jQuery/jquery.min.js"></script>
+	<script src="plugins/bootstrap/js/popper.min.js"></script>
+	<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="plugins/bootstrap/js/bootstrap-slider.js"></script>
+	<!-- tether js -->
+	<script src="plugins/tether/js/tether.min.js"></script>
+	<script src="plugins/raty/jquery.raty-fa.js"></script>
+	<script src="plugins/slick-carousel/slick/slick.min.js"></script>
+	<script src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+	<script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
+	<script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
+	<!-- google map -->
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+	<script src="plugins/google-map/gmap.js"></script>
+	<script src="js/script.js"></script>
+	<script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
+
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+
+	<script src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script>
+
+</body>
+<script>
+	new Vue({
+		el: "#app",
+		data() {
+			return {
+				info: null,
+				studentPwd: null,
+				reStudentPwd: null			}
+		},
+		created() {
+			axios.get("/onlineStudent/api/getInfo").then(reponse => (this.info = reponse["data"]["data"]))
+		},
+		methods: {
+			change: function () {
+				var _this = this;
+				axios.put("/onlineStudent/api/changeInfo", {
+					studentAge: this.info.studentAge,
+					studentName: this.info.studentName,
+					studentSex: $("#sex").val(),
+					studentOc: $("#Oc").val()
+				}).then(function (reponse) {
+					_this.reloadinfo();
+					bootbox.alert({
+						buttons: {
+							ok: {
+								label: '知道了',
+								className: 'btn-outline-danger'
+							}
+						},
+						message: reponse["data"]["msg"],
+
+					})
+				})
+
+			},
+			pwd: function () {
+				var _this=this;
+				if (this.reStudentPwd != this.studentPwd) {
+					bootbox.alert({
+						buttons: {
+							ok: {
+								label: '知道了',
+								className: 'btn-outline-danger'
+							}
+						},
+						message: "两次密码不一致"
+
+					})
+					return;
+				}
+				if (this.reStudentPwd.toString().length < 6) {
+					bootbox.alert({
+						buttons: {
+							ok: {
+								label: '知道了',
+								className: 'btn-outline-danger'
+							}
+						},
+						message: "密码少于六位！"
+
+					})
+					return;
+				}
+				axios.put("/onlineStudent/api/changePwd", {
+					studentPwd: this.reStudentPwd
+				}).then(function (reponse) {
+					_this.reloadinfo();
+					bootbox.alert({
+						buttons: {
+							ok: {
+								label: '知道了',
+								className: 'btn-outline-danger'
+							}
+						},
+						message: reponse["data"]["msg"],
+
+					})
+				})
+			},
+			reloadinfo: function () {
+				axios.get("/onlineStudent/api/getInfo").then(reponse => (this.info = reponse["data"]["data"]))
+
+			}
+		}
+
+	})
+
+</script>
+
+
+
+</html>

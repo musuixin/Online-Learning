@@ -82,7 +82,7 @@
       $("#login").text("登陆中...");
       $.ajax({
         type:"get",
-        url: "http://localhost:8080/onlineAdmain/LoginApi",
+        url: "/onlineAdmain/LoginApi",
         data: $("form").serialize(),
         success:function(data){
           if(data["status"]=="400"){
@@ -90,7 +90,7 @@
             $("#login").text("登陆");
           }
           if(data["status"]=="200"){
-            window.location.href="http://localhost:8080/onlineAdmain/index";
+            window.location.href=" /onlineAdmain/index";
           }
         }
       })

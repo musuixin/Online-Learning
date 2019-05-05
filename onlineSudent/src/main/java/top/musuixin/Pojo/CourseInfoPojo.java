@@ -17,4 +17,5 @@ public class CourseInfoPojo {
     private String courseInfo;
     private String  teacherName;
     private String teacherEdu;
+    private String courseContent;
 }

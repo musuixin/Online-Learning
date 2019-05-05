@@ -10,5 +10,7 @@ import java.util.HashMap;
  * @date 2019-04-28 13:05
  */
 public interface SelectionService {
-    HashMap<String,Object> addSelectAssess(StudentPoJo studentPoJo, SelectionPojo selectionPojo);
+    HashMap<String, Object> addSelectAssess(StudentPoJo studentPoJo, SelectionPojo selectionPojo);
+
+    HashMap<String, Object> addSelection(SelectionPojo selectionPojo);
 }

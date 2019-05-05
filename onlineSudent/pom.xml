@@ -12,6 +12,7 @@
     <artifactId>onlinestudent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>onlinestudent</name>
+    <packaging>war</packaging>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -101,6 +102,7 @@
     </dependencies>
 
     <build>
+        <finalName>onlineStudent</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -17,4 +17,6 @@ public interface EchartMapper {
     int getStudentNumber();
     @Select("select count(*) from course")
     int getCourseNumber();
+    @Select("select sum(courseTime)  from course")
+    int getTotalTime();
 }

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Classimax</title>
+  <title>课程列表</title>
 
   <!-- FAVICON -->
   <link href="img/favicon.png" rel="shortcut icon">
@@ -195,7 +195,7 @@
       }
     },
     created() {
-      axios.get("http://localhost:8080/onlineStudent/api/getCourseList").then(response => (this.data = response["data"]["data"]))
+      axios.get(" /onlineStudent/api/getCourseList").then(response => (this.data = response["data"]["data"]))
     },
 
   })

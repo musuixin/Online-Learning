@@ -41,6 +41,7 @@ public class DataController {
 
     @GetMapping("/getNumber")
     HashMap<String, Object> getNumber() {
+        hashMap.put("data",null);
         HashMap<String, Integer> number = echartService.getNumber();
         hashMap.put("status", "200");
         hashMap.put("data", number);
@@ -49,6 +50,7 @@ public class DataController {
 
     @GetMapping("/selectionData")
     HashMap<String, Object> getSelecctData(int num) {
+        hashMap.put("data",null);
         PageHelper.startPage(num, 10);
         List<SelectionPojo> selectData = selectionMapper.getSelectData();
         PageInfo pageInfo = new PageInfo(selectData);
@@ -62,6 +64,7 @@ public class DataController {
 
     @GetMapping("/CourseData")
     HashMap<String, Object> getCourseData(int num) {
+        hashMap.put("data",null);
         PageHelper.startPage(num, 10);
         List<CoursePojo> course = courseMapper.getCourse();
         PageInfo pageInfo = new PageInfo(course);

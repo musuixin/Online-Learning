@@ -13,18 +13,21 @@ import java.util.HashMap;
  * @date 2019-04-24 10:50
  */
 @Service
-public class EchartServiceimple  implements EchartService {
+public class EchartServiceimple implements EchartService {
     @Autowired
     EchartMapper echartMapper;
+
     @Override
-    public HashMap<String,Integer> getNumber() {
-        HashMap<String,Integer> hashMap=new HashMap<>();
+    public HashMap<String, Integer> getNumber() {
+        HashMap<String, Integer> hashMap = new HashMap<>();
         int studentNumber = echartMapper.getStudentNumber();
         int teacherNumber = echartMapper.getTeacherNumber();
         int courseNumber = echartMapper.getCourseNumber();
-        hashMap.put("studentNumber",studentNumber);
-        hashMap.put("teacherNumber",teacherNumber);
-        hashMap.put("courserNumber",courseNumber);
+        int totalTime = echartMapper.getTotalTime();
+        hashMap.put("studentNumber", studentNumber);
+        hashMap.put("teacherNumber", teacherNumber);
+        hashMap.put("courserNumber", courseNumber);
+        hashMap.put("totalTime", totalTime);
         return hashMap;
     }
 

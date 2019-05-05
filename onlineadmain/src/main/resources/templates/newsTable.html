@@ -136,7 +136,7 @@
             customCompFunc(params) {
                 if (confirm("确定删除<<" + params.rowData["newsTitle"] + ">>?")) {
                     var _this = this;
-                    axios.delete("http://localhost:8080/onlineAdmain/api/News", {
+                    axios.delete("/onlineAdmain/api/News", {
                         params: {
                             newsId: params.rowData["newsId"]
                         }
@@ -152,7 +152,7 @@
             }
         },
         created() {
-            axios.get('http://localhost:8080/onlineAdmain/api/News')
+            axios.get('/onlineAdmain/api/News')
                 .then(response => (this.tableData = response["data"]["data"]))
         },
         data: function () {

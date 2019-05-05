@@ -19,7 +19,7 @@ import java.util.LinkedList;
 
 public interface NewsMapper {
 
-    @Select("select newsId, newsTo, newsTitle,newsDate from online.news where newsTo='学生' order by newsDate desc ;")
+    @Select("select newsId, newsTo, newsTitle,newsDate from online.news where newsTo!='教师' order by newsDate desc ;")
     LinkedList<NewsPojo> getNewsList();
     @Select("select * from  online.news where newsId=#{newsId} ")
     NewsPojo getNewsText(NewsPojo newsPojo);

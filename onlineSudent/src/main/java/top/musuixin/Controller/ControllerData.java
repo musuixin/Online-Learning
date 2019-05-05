@@ -119,4 +119,20 @@ public class ControllerData {
         HashMap<String, Object> hashMap = selectionServiceImple.addSelectAssess(studentPoJo, selectionPojo);
         return hashMap;
     }
+
+    @PostMapping("/addSelection")
+    HashMap<String, Object> addSelection(SelectionPojo selectionPojo, @SessionAttribute(value = "StudentId", required = false) String studentId) {
+        System.out.println(selectionPojo.getCourseId());
+        hashMap.put("data", null);
+        if (studentId == null) {
+            hashMap.put("status", "400");
+            hashMap.put("msg", "请先登陆");
+            return hashMap;
+
+        }
+
+        selectionPojo.setStudentId(studentId);
+        HashMap<String, Object> hashMap = selectionServiceImple.addSelection(selectionPojo);
+        return hashMap;
+    }
 }

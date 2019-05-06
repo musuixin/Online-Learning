@@ -6,7 +6,7 @@
  - 搭建本系统用到的思想有：前后端分离，微服务架构，restful api架构。
  - 使用软件VS code（前端编写），IDEA（后端编写）。
  - 在线服务器为阿里云服务器。
-在线演示链接:[http://www.musuixin.top:8080/onlineLearning/](http://www.musuixin.top:8080/onlineLearning/)
-学生与教师不提供对外注册接口，管理员可以注册，需要邀请码，想要注册联系我Q：1804125652
-**提供一个学生ID：1059 密码：123456**
-**提供一个教师ID：100018 密码：654321**
+ - 在线演示链接:[http://www.musuixin.top:8080/onlineLearning/](http://www.musuixin.top:8080/onlineLearning/)
+ **学生与教师不提供对外注册接口，管理员可以注册，需要邀请码，想要注册联系我Q：1804125652**
+   **提供一个学生ID：1059 密码：123456**
+   **提供一个教师ID：100018 密码：654321**

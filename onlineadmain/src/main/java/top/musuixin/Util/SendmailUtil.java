@@ -48,7 +48,7 @@ public class SendmailUtil extends Thread {
             // 得到邮差对象
             Transport transport = session.getTransport();
             // 连接自己的邮箱账户
-            transport.connect("musuixin@musuixin.cn", "******");// 密码为刚才得到的授权码
+            transport.connect("musuixin@musuixin.cn", "QQ1804125652yu");// 密码为刚才得到的授权码
             // 发送邮件
             transport.sendMessage(message, message.getAllRecipients());
         } catch (Exception e) {
